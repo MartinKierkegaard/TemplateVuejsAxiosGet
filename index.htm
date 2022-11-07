@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Posts, Vue3 + REST</title>
+    <style>
+        button {
+            margin: 5px 5px 5px 5px
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Posts, Vue3 + REST</h1>
+
+    <div id="app">
+
+        <button class="btn btn-warning" v-on:click="cleanList">Clean the list</button>
+        <br>
+        <button class="btn btn-primary" v-on:click="getByUserId(userId)">Get By UserId</button>
+        <input v-model.number="userId" placeholder="User Id" type="number">
+        <br>
+        <button class="btn btn-primary" v-on:click="getAllPosts">Get All</button>
+
+        <div v-if="error" style="color: red">{{error}}</div>
+
+       
+
+        <ul v-if="posts.length > 0">
+            <li v-for="post in posts" v-bind:key="post.id">
+                UserId {{post.userId}}  : {{post.title}} 
+            </li>
+        </ul>       
+        <div v-else style="font-style: italic;">No posts to show</div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
